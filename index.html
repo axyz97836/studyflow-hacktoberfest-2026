@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="StudyFlow is a student task tracker for planning study work, tracking progress, and staying focused."
+    />
+    <title>StudyFlow — Student Task Tracker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="ambient" aria-hidden="true"></div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">SF</span>
+          <div>
+            <p class="eyebrow">MLH Global Hack Week · Hacktoberfest 2026</p>
+            <h1>StudyFlow</h1>
+            <p class="tagline">Student Task Tracker</p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          class="theme-toggle"
+          id="themeToggle"
+          aria-pressed="false"
+          aria-label="Switch to dark mode"
+        >
+          <span class="theme-icon" aria-hidden="true">🌙</span>
+          <span class="theme-label">Dark</span>
+        </button>
+      </header>
+
+      <main id="main">
+        <section class="hero-card" aria-labelledby="hero-heading">
+          <div>
+            <h2 id="hero-heading">Plan your study session</h2>
+            <p>
+              Add tasks, tick them off, and watch your progress fill in. Your
+              list and theme stay saved in this browser.
+            </p>
+          </div>
+          <div class="hero-chip" aria-hidden="true">Focus · Finish · Flow</div>
+        </section>
+
+        <section class="stats" aria-label="Task statistics">
+          <article class="stat-card">
+            <p class="stat-label">Total</p>
+            <p class="stat-value" id="totalCount">0</p>
+          </article>
+          <article class="stat-card stat-complete">
+            <p class="stat-label">Completed</p>
+            <p class="stat-value" id="completedCount">0</p>
+          </article>
+          <article class="stat-card stat-pending">
+            <p class="stat-label">Pending</p>
+            <p class="stat-value" id="pendingCount">0</p>
+          </article>
+        </section>
+
+        <section class="progress-panel" aria-labelledby="progress-heading">
+          <div class="progress-copy">
+            <h2 id="progress-heading">Study progress</h2>
+            <p id="progressCaption">No tasks yet. Add your first study goal.</p>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-labelledby="progress-heading"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            id="progressBar"
+          >
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </section>
+
+        <section class="composer-card" aria-labelledby="add-heading">
+          <h2 id="add-heading" class="sr-only">Add a study task</h2>
+          <form id="taskForm" novalidate>
+            <div class="field">
+              <label for="taskInput">New study task</label>
+              <div class="field-row">
+                <input
+                  id="taskInput"
+                  name="task"
+                  type="text"
+                  maxlength="140"
+                  autocomplete="off"
+                  placeholder="e.g. Review Chapter 4 notes"
+                  aria-describedby="taskHint taskError"
+                  required
+                />
+                <button type="submit" class="primary-btn">Add Task</button>
+              </div>
+              <p class="hint" id="taskHint">Press Enter to add. Keep it short and specific.</p>
+              <p class="error" id="taskError" role="alert" hidden></p>
+            </div>
+          </form>
+        </section>
+
+        <section class="list-card" aria-labelledby="list-heading">
+          <div class="list-header">
+            <h2 id="list-heading">Your tasks</h2>
+            <div class="filters" role="tablist" aria-label="Filter tasks">
+              <button type="button" class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">
+                All
+              </button>
+              <button type="button" class="filter-btn" data-filter="active" role="tab" aria-selected="false">
+                Active
+              </button>
+              <button type="button" class="filter-btn" data-filter="completed" role="tab" aria-selected="false">
+                Completed
+              </button>
+            </div>
+          </div>
+
+          <ul id="taskList" class="task-list"></ul>
+          <p id="emptyState" class="empty-state">
+            No study tasks yet. Add one above to start your flow.
+          </p>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Built with HTML, CSS, and vanilla JavaScript for GHW Hacktoberfest 2026 Challenge 1.</p>
+      </footer>
+    </div>
+
+    <div class="sr-only" id="liveRegion" aria-live="polite" aria-atomic="true"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
